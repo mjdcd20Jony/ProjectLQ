@@ -19493,6 +19493,7 @@ MonoBehaviour:
   targetScale: {x: 5, y: 5, z: 5}
   speed: 5
   playerController: {fileID: 1730480806}
+  scalingSound: {fileID: 8300000, guid: d12b54678837105429dac07e1452ef34, type: 3}
 --- !u!1 &541859534
 GameObject:
   m_ObjectHideFlags: 0
@@ -21136,7 +21137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyes: {fileID: 786571868}
   floor: {fileID: 374868673}
-  eyesActivationSound: {fileID: 8300000, guid: fdf7f5983ddb57e438a18fa619306365, type: 3}
+  eyesActivationSound: {fileID: 8300000, guid: 0cce089357b0a874b9b76b1607bb969b, type: 3}
 --- !u!1001 &822433332
 PrefabInstance:
   m_ObjectHideFlags: 0

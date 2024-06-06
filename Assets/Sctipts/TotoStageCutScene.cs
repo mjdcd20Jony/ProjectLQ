@@ -7,7 +7,9 @@ public class TotoStageCutScene : MonoBehaviour
     [SerializeField] private GameObject platform;
     [SerializeField] private Vector3 targetScale;
     [SerializeField] private float speed;
-    [SerializeField] private PlayerController playerController; // 드래그 앤 드롭으로 에디터에서 할당할 수 있게 만듦
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private AudioClip scalingSound; // 추가된 부분
+    private AudioSource audioSource; // 추가된 부분
 
     private Vector3 fixedPlayerPosition = new Vector3(302.6f, -29.3f, 0);
     private bool isScalingComplete = false;
@@ -16,7 +18,10 @@ public class TotoStageCutScene : MonoBehaviour
     {
         platform.SetActive(false);
 
-        // playerController를 수동으로 할당하지 않는다면, 찾아서 할당
+        // AudioSource 초기화
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = scalingSound;
+
         if (playerController == null)
         {
             playerController = FindObjectOfType<PlayerController>();
@@ -45,6 +50,8 @@ public class TotoStageCutScene : MonoBehaviour
         Vector3 originalScale = transform.localScale;
         float elapsedTime = 0;
 
+        audioSource.Play();
+
         while (elapsedTime < duration)
         {
             transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsedTime / duration);
@@ -56,5 +63,7 @@ public class TotoStageCutScene : MonoBehaviour
         isScalingComplete = true;
         platform.SetActive(true);
         gameObject.SetActive(false);
+
+        audioSource.Stop();
     }
 }

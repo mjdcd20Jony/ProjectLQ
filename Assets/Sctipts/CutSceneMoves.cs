@@ -9,18 +9,28 @@ public class CutSceneMoves : MonoBehaviour
     public float moveSpeed;
     public GameObject lastscenes;
     public string nextSceneName;
+    public AudioSource soundEffect;
+    public AudioClip soundClip;  // 오디오 클립 필드 추가
+    private bool isMoving = true; // 이동 중인지 여부를 나타내는 플래그
 
     void Start()
     {
         moveSpeed = 3f;
         StartCoroutine(MoveToTarget());
         lastscenes.SetActive(false);
+
+        // 오디오 클립을 AudioSource에 할당
+        if (soundEffect != null && soundClip != null)
+        {
+            soundEffect.clip = soundClip;
+        }
     }
 
     void Update()
     {
-        if (transform.position == targetPosition)
+        if (isMoving && transform.position == targetPosition)
         {
+            isMoving = false; // 이동이 끝났음을 표시
             StartCoroutine(ActivateLastSceneAndWait());
         }
     }
@@ -43,6 +53,10 @@ public class CutSceneMoves : MonoBehaviour
     IEnumerator ActivateLastSceneAndWait()
     {
         lastscenes.SetActive(true);
+        if (soundEffect != null)
+        {
+            soundEffect.Play();
+        }
         yield return new WaitForSeconds(2f);
         LoadNextScene();
     }
