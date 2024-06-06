@@ -1,0 +1,13 @@
+using UnityEngine;
+
+public class BulletSpawner : MonoBehaviour
+{
+    public GameObject bulletPrefab; // ÃÑ¾Ë ÇÁ¸®ÆÕ
+    public Transform firePoint; // ÃÑ¾ËÀÌ ¹ß»çµÉ À§Ä¡
+
+    // ÃÑ¾Ë ¹ß»ç ÇÔ¼ö
+    public void SpawnBullet()
+    {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    }
+}

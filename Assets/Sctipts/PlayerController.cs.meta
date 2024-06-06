@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 17dd8c11ddf5b8e4fb78a1b0eea04401
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerAnimator: {instanceID: 0}
+  - torchObject: {instanceID: 0}
+  - hp_BAR: {instanceID: 0}
+  - jumpClip: {fileID: 8300000, guid: 701d415b7399fa84496d7af957a1ab89, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
